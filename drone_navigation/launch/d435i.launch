@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="camera"          default="d435i"/>
+    <arg name="device_type"     default="d435i"/>
+    
+    <node pkg="tf" type="static_transform_publisher" name="tf_t265Link_d435iLink"
+        args="0 0 -0.038 0 0 0 t265_link $(arg camera)_link 1000"/>
+
+    <include file="$(find realsense2_camera)/launch/rs_camera.launch">
+        <arg name="camera"           value="$(arg camera)"/>
+        <arg name="device_type"      value="$(arg device_type)"/>
+    </include>
+</launch>

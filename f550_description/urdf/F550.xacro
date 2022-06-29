@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<robot name="F550" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find F550_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find F550_description)/urdf/F550.trans" />
+<xacro:include filename="$(find F550_description)/urdf/F550.gazebo" />
+<link name="base_footprint">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+</link>
+<link name="base_link">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.005395456547335012 2.9062818839453644e-05 0.16363840614382194"/>
+    <mass value="0.6065550278976658"/>
+    <inertia ixx="0.010994" ixy="-2e-06" ixz="8e-06" iyy="0.011403" iyz="0.0" izz="0.021049"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 -0.15"/>
+    <geometry>
+      <mesh filename="package://F550_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 0 -0.15"/>
+    <geometry>
+      <mesh filename="package://F550_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="footprint_to_base" type="fixed">
+  <origin rpy="0 0 0" xyz="0 0 0.15"/>
+  <parent link="base_footprint"/>
+  <child link="base_link"/>
+</joint>
+
+</robot>

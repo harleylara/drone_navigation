@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+  
+  
+  <!-- Launch bridge -->
+  <include file="$(find drone_navigation)/launch/bridge.launch" >
+  </include>
+
+  <!-- Launch MavROS -->
+  <include file="$(find drone_navigation)/launch/mavros.launch" >
+  </include>
+
+
+
+</launch>
